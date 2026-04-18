@@ -40,9 +40,26 @@ void list_insert(list* l, void* val, int index);
 */
 void list_remove(list* l, int index);
 
-
+/**
+ * @brief Executes a specfied operation (function pointer) 
+ * for each byte in specifed list.
+*/
 void list_foreach(list* l, uint8_t*(*byte_op)(uint8_t*, uint8_t*));
 
-void list_print(list* l);
+/** 
+ * @brief Prints the specifed list onto stdout in
+ * the form of 'format specifier' from stdio printf. 
+*/
+void list_print(list* l, char* format_specifier);
+
+/**
+ * @brief Prints the specifed list onto stdout in
+ * binary form. 
+ * Note, in newer versions of stdio, printf can format 
+ * binary with '%b'. Therefore, can list_print be 
+ * used instead of this function.
+*/
+void list_print_bin(list* l);
+
 
 #endif
