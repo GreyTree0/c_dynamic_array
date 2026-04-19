@@ -23,8 +23,8 @@ list list_init(int init_capacity, int element_size);
 void list_append(list* l, void* val);
 
 /** 
- * @brief Removes a specified value to the specifed list. Returns
- * false if the element was not in the list, otherwise true.
+ * @brief Removes a specified value in the specifed list. Returns
+ * true if the element is in the list, otherwise false.
 */
 bool list_pop(list* l, void* val);
 

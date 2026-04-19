@@ -2,6 +2,15 @@
 #include <stdio.h>
 #include <stdint.h>
 
+/*
+
+	What should happend if you set element_size to be uneven?
+
+
+
+
+*/
+
 list list_init(int init_capacity, int element_size) {
 	list l = {0};
 	l.capacity = init_capacity;
@@ -39,10 +48,29 @@ bool list_pop(list* l, void* val); // TODO
 
 void list_insert(list* l, void* val, int index); // TODO
 
-void list_remove(list* l, int index); // TODO
+void list_remove(list* l, int index) {
+	
+	// [   x   ][i][   y   ]
+	// shift min(x, y) to make [   x   ][   y   ]
+
+
+
+	if (index > (l->size / 2)); // if - shift y
+	
+	int y = (l->size - index - 1) * l->element_size;
+	for (int i = 1; i <= (l->size - index - 1) * l->element_size - 1; ++i) {
+		l->arr[l->size - (l->size - index - 1) * l->element_size] = l->arr[l->size * l->element_size - i];
+	}
+
+}
 
 void list_foreach(list* l, uint8_t*(*byte_op)(uint8_t*, uint8_t*)); // TODO
-																	//
+
+
+void list_free(list* l, int free_amount);
+
+void list_kill(list* l);
+
 
 void list_print(list* l, char* pntf_format) {
 	printf("{");
@@ -88,6 +116,7 @@ int main() {
 	list boolean_list = list_init(4, 1);
 	list_append(&boolean_list, &(int){1});
 	list_append(&boolean_list, &(int){0});
+	list_remove($boolean_list, );
 	list_print_bin(&boolean_list);
 	list_print(&boolean_list, "%lld");
 
